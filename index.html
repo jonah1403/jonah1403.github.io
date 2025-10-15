@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jonahs Startseite</title>
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --fg: #1a1a1a;
+      --accent: #20b581ff;
+      --card-bg: #fff;
+      --border: #e5e7eb;
+    }
+    html {
+      box-sizing: border-box;
+    }
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.8;
+      letter-spacing: 0.01em;
+      min-height: 100vh;
+    }
+    header {
+      padding: 2.5rem 1rem 1.5rem 1rem;
+      text-align: center;
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 {
+      margin: 0 0 0.5rem 0;
+      font-size: 2.2rem;
+      color: var(--accent);
+      letter-spacing: -1px;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    section {
+      border-radius: 1rem;
+      box-shadow: 0 2px 12px rgba(32,181,129,0.08);
+      padding: 2rem 1.2rem;
+      border: 1px solid var(--border);
+    }
+    /* Bild und Tabelle nebeneinander auf großem Screen */
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+    .about-container figure {
+      flex: 0 0 160px;
+      margin: 0;
+      text-align: center;
+    }
+    .about-container img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2.5px solid var(--accent);
+      box-shadow: 0 2px 8px rgba(32,181,129,0.10);
+      background: #eee;
+    }
+    .about-container figcaption {
+      margin-top: 0.7rem;
+      font-size: 1.05rem;
+      color: #555;
+    }
+    .about-container .about-text h2 {
+      margin-bottom: 1rem;
+      font-size: 1.35rem;
+      color: var(--accent);
+    }
+    .about-container .about-text p {
+      margin-bottom: 1.1em;
+    }
+    /* Tabelle */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.2rem;
+      font-size: 1.04rem;
+      border-radius: 0.7rem;
+      overflow: hidden;
+      box-shadow: 0 1px 8px rgba(32,181,129,0.06);
+    }
+    th, td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      transition: background 0.2s;
+    }
+    th {
+      background: #f3fdf8;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    tbody tr:hover {
+      background: #e6faf3;
+      cursor: pointer;
+    }
+    /* Galerie */
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 721px) {
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 24px rgba(32,181,129,0.13), 0 1.5px 6px rgba(0,0,0,0.03);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .card:hover, .card:focus-within {
+      box-shadow: 0 8px 32px rgba(32,181,129,0.18), 0 2px 8px rgba(0,0,0,0.04);
+      border-color: var(--accent);
+    }
+    .card img {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      display: block;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+    .card-content {
+      padding: 1.2rem 1rem 1.1rem 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.7rem;
+    }
+    .card-title {
+      font-size: 1.13rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+      margin: 0 0 0.5rem 0;
+    }
+    .card-text {
+      font-size: 0.97rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+    .card-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: auto;
+      transition: text-decoration 0.2s;
+      font-size: 1.01rem;
+    }
+    .card-link:hover, .card-link:focus {
+      text-decoration: underline;
+    }
+    @media (max-width: 720px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      section {
+        padding: 1.2rem 0.5rem;
+      }
+      main {
+        padding: 0 0.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Jonah Mustermann</h1>
+    <p>Willkommen auf meiner persönlichen Startseite.</p>
+  </header>
+  <main>
+    <section aria-labelledby="about-title">
+      <div class="about-container">
+        <figure>
+          <img src="https://picsum.photos/140/140?grayscale&random=4" alt="Porträt von Jonah Mustermann" />
+          <figcaption>Das bin ich</figcaption>
+        </figure>
+        <div class="about-text">
+          <h2 id="about-title" style="margin-top:0;">Über mich</h2>
+          <p>
+            Ich bin Jonah, Student der Geoinformatik mit Begeisterung für Karten, Daten und Technologie. 
+            Auf dieser Seite findest du einen kurzen Überblick über meinen Werdegang und einige meiner Projekte.
+          </p>
+          <p>
+            Neben dem Studium beschäftige ich mich gerne mit Webentwicklung, Fotografie und Outdoor-Aktivitäten.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="stationen-title">
+      <h2 id="stationen-title" style="margin-top:0;">Stationen</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Jahr</th>
+            <th>Station</th>
+            <th>Ort</th>
+            <th>Stichwort</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2018</td>
+            <td>Abitur</td>
+            <td>Berlin</td>
+            <td>Schulabschluss</td>
+          </tr>
+          <tr>
+            <td>2019</td>
+            <td>Freiwilligendienst</td>
+            <td>Leipzig</td>
+            <td>Umweltschutz</td>
+          </tr>
+          <tr>
+            <td>2020</td>
+            <td>Studienbeginn</td>
+            <td>Dresden</td>
+            <td>Geoinformatik</td>
+          </tr>
+          <tr>
+            <td>2022</td>
+            <td>Praktikum</td>
+            <td>Hamburg</td>
+            <td>GIS</td>
+          </tr>
+          <tr>
+            <td>2023</td>
+            <td>Werkstudent</td>
+            <td>Berlin</td>
+            <td>Webmapping</td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>Bachelorarbeit</td>
+            <td>Dresden</td>
+            <td>Fernerkundung</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-labelledby="galerie-title">
+      <h2 id="galerie-title" style="margin-top:0;">Galerie</h2>
+      <div class="gallery">
+        <article class="card">
+          <a href="https://github.com/jonah1403" target="_blank" rel="noopener" tabindex="-1" aria-label="Zu meinem GitHub-Profil">
+            <img src="https://picsum.photos/600/400?random=1" alt="GitHub Platzhalterbild">
+          </a>
+          <div class="card-content">
+            <div>
+              <h3 class="card-title">GitHub</h3>
+              <p class="card-text">Meine Programmierprojekte, Code und Beiträge zu Open Source findest du auf meinem GitHub-Profil.</p>
+            </div>
+            <a class="card-link" href="https://github.com/jonah1403" target="_blank" rel="noopener" aria-label="Zu meinem GitHub-Profil">Zur Website</a>
+          </div>
+        </article>
+        <article class="card">
+          <a href="https://portfolio.example.com" target="_blank" rel="noopener" tabindex="-1" aria-label="Zu meinem Portfolio">
+            <img src="https://picsum.photos/600/400?random=2" alt="Portfolio Platzhalterbild">
+          </a>
+          <div class="card-content">
+            <div>
+              <h3 class="card-title">Portfolio</h3>
+              <p class="card-text">Eine Auswahl meiner Web- und Kartenprojekte, Studienarbeiten und Visualisierungen im Überblick.</p>
+            </div>
+            <a class="card-link" href="https://portfolio.example.com" target="_blank" rel="noopener" aria-label="Zu meinem Portfolio">Zur Website</a>
+          </div>
+        </article>
+        <article class="card">
+          <a href="https://fotoblog.example.com" target="_blank" rel="noopener" tabindex="-1" aria-label="Zu meinem Fotoblog">
+            <img src="https://picsum.photos/600/400?random=3" alt="Fotoblog Platzhalterbild">
+          </a>
+          <div class="card-content">
+            <div>
+              <h3 class="card-title">Fotoblog</h3>
+              <p class="card-text">Im Fotoblog teile ich Eindrücke aus Natur, Reisen und Alltag – fotografisch festgehalten.</p>
+            </div>
+            <a class="card-link" href="https://fotoblog.example.com" target="_blank" rel="noopener" aria-label="Zu meinem Fotoblog">Zur Website</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
